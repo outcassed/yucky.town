@@ -49,7 +49,7 @@ header {
 }
 
 .y-logo svg {
-  width: min(80vw, 380px);
+  width: min(80vw, 640px);
   height: auto;
   
 }

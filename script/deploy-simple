@@ -5,4 +5,5 @@ REMOTE_RUBY="/opt/ruby-3.0.2"
 rsync --delete-after -av --exclude='.*' ~/git/yucky.town/* deploy@box.cass.xyz:/var/www/sites/yucky.town | lolcat
 ssh deploy@box.cass.xyz "cd /var/www/sites/yucky.town && $REMOTE_RUBY/bin/bundle install --deployment"
 ssh deploy@box.cass.xyz "cd /var/www/sites/yucky.town && mkdir -p tmp && touch tmp/restart.txt"
+ssh deploy@box.cass.xyz "cd /var/www/sites/yucky.town && chown -R nobody public"
 
