@@ -1,0 +1,106 @@
+body.yucky {
+  /* uses */
+  --use-logo-alternate-colors: 0;
+
+  /* logo */
+  --logo-drip-color: #c07fd2;
+  --logo-outline-color: #91da71;
+
+  --logo-drip-alt-color: magenta;
+  --logo-outline-alt-color: cyan;
+  --logo-fill-color: rgba(100, 100, 100, 0.25);
+  --logo-smear-color: green;
+
+  /**/
+  --body-background-color: #000;
+
+  --drip-delay: 0.5s;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 125%;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--body-background-color);
+}
+
+header {
+}
+
+/* u: utility */
+
+
+/* y: single use */
+.y-logo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100vw;
+  max-height: 100vh;
+}
+
+.y-logo svg {
+  width: min(80vw, 380px);
+  height: auto;
+  
+}
+
+.y-logo path[fill='none'] {
+  fill: var(--logo-fill-color);
+  fill: url(#oatmeal);
+}
+
+.y-logo path[fill='#c07fd2'] {
+  fill: var(--logo-outline-color);
+}
+
+.y-logo g:nth-child(3) path {
+  /* inside the O */
+  fill: var(--body-background-color);
+}
+
+.y-logo path {
+  filter: drop-shadow(0 1px 1px var(--logo-smear-color));
+}
+
+
+@keyframes simple-smear {
+  0% { 
+    filter: drop-shadow(0 1px 1px var(--logo-smear-color)); 
+  }
+  100% { 
+    filter: drop-shadow(0 100px 200px var(--logo-smear-color)); 
+  }
+}
+
+@keyframes drip {
+  0% { 
+    stroke: var(--logo-drip-color);
+    stroke-width: 1;
+    opacity: 1;
+  }
+  100% { 
+    stroke: var(--logo-fill-color);
+    stroke-width: 50;
+    opacity: 0.5;
+  }
+}
+
+
+.y-logo--animating path { 
+  animation: simple-smear 10s linear forwards; 
+}
+
+.y-logo--animating path[fill='#c07fd2'] {
+  animation: drip 2s ease-in forwards; 
+  animation-delay: 0s;
+}

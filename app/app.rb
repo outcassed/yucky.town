@@ -11,8 +11,9 @@ get '/' do
   erb :index
 end
 
-get '/test' do
-  erb :index
+get '/logo' do
+  content_type 'image/svg+xml'
+  erb :logo, layout: false
 end
 
 

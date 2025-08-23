@@ -1,3 +1,7 @@
+# for dev
+require 'rack/static'
+use Rack::Static, :urls => ["/assets", "/sites"], :root => File.join(File.dirname(__FILE__), "..", "public")
+
 # Mount the main site
 require_relative 'app'
 map '/' do
